@@ -25,5 +25,6 @@ RUN \
     && make install \
     && rm -rf /usr/src/pg_partman
 
+RUN echo "listen_addresses = '*'" >> /etc/postgresql/postgresql.conf
 RUN echo "shared_preload_libraries = 'pg_partman_bgw,pg_cron'" >> /etc/postgresql/postgresql.conf
 CMD ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
